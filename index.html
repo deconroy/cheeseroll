@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CheeseRoll" ng-controller="Main">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="js/angular.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <!-- Modules -->
+    <script src="js/cheese.js"></script>
+    <!-- Controllers -->
+    <script src="js/controllers/Main.js"></script>
+
+    <!-- Page setup -->
+    <title>{{ current_page.title }}</title>
+  </head>
+  <body>
+    <header id="header" class="navbar navbar-default navbar-fixed-top">
+      <!-- Mobile Header -->
+      <nav class="visible-xs">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="{{ !isCollapsed }}" aria-controls="navbar" ng-click="isCollapsed = !isCollapsed">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ng-click="goToPage(pages.home)" href="#home">Cheese Roll</a>
+          </div>
+          <div id="navbar" class="" uib-collapse="isCollapsed">
+            <ul class="nav navbar-nav">
+              <li ng-repeat="page in pages" ng-click="goToPage(page)" class="{{ active }}" role="presentation"><a  href="{{ page.link }}">{{ page.title }}</a></li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- Desktop Header -->
+    <nav class="hidden-xs">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" ng-click="goToPage(pages.home)" href="#home">Cheese Roll</a>
+          </div>
+          <div id="navbar" class="">
+            <ul class="nav navbar-nav">
+              <li ng-repeat="page in pages" ng-click="goToPage(page)" class="{{ active }}" role="presentation"><a  href="{{ page.link }}">{{ page.title }}</a></li>
+            </ul>
+            <!-- <ul class="nav navbar-nav navbar-right">
+            </ul> -->
+          </div>
+        </div>
+    </nav>
+    </header>
+    <div class="container"><div class="page-header">
+      <h1>{{ current_page.title }}</h1>
+    </div></div>
+  </body>
+</html>
